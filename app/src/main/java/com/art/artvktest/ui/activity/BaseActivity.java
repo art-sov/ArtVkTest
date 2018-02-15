@@ -9,6 +9,7 @@ import com.art.artvktest.ui.fragment.BaseFragment;
 
 public class BaseActivity extends MvpAppCompatActivity{
 
+    //вызывается при смене фрагмента, чтобы менять заголовок тулбара и видимость кнопки ФАБ
     public void fragmentOnScreen(BaseFragment fragment){
 
     }

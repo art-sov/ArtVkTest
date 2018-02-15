@@ -1,4 +1,4 @@
-package com.art.artvktest;
+package com.art.artvktest.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.art.artvktest.CurrentUser;
+import com.art.artvktest.R;
 import com.art.artvktest.consts.ApiConstants;
 import com.art.artvktest.mvp.presenter.MainPresenter;
 import com.art.artvktest.mvp.view.MainView;
@@ -14,7 +16,7 @@ import com.vk.sdk.VKCallback;
 import com.vk.sdk.VKSdk;
 import com.vk.sdk.api.VKError;
 
-public class MainActivity extends MvpAppCompatActivity implements MainView {
+public class MainActivity extends BaseActivity implements MainView {
 
     @InjectPresenter
     MainPresenter mainPresenter;
@@ -23,6 +25,9 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        String[] fingerprints = VKUtil.getCertificateFingerprint(this, this.getPackageName());
+//        Log.d("MainActivity", "Fingerprint: " + Arrays.toString(fingerprints));
 
         mainPresenter.checkAuth();
     }

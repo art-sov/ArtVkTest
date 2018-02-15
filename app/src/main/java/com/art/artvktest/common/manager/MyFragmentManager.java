@@ -22,7 +22,7 @@ public class MyFragmentManager {
     private BaseFragment mCurrentFragment;
 
 
-    //метод, который будет отображать корневой фрагмент, который будет отбражать основное содержимое окна,
+    //метод, который будет отображать корневой фрагмент, который будет отображать основное содержимое окна,
     //в нем будут отображать заголовки тулбара и втидимость кнопки ФАБ
     public void setFragment(BaseActivity activity, BaseFragment fragment, @IdRes int containerId){
         if (activity != null && !activity.isFinishing() && !isAlreadyContains(fragment)){

@@ -24,13 +24,18 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
 //        String[] fingerprints = VKUtil.getCertificateFingerprint(this, this.getPackageName());
 //        Log.d("MainActivity", "Fingerprint: " + Arrays.toString(fingerprints));
 
         mainPresenter.checkAuth();
     }
+
+    @Override
+    protected int getMainContentLayout() {
+        return R.layout.activity_main;
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (!VKSdk.onActivityResult(requestCode, resultCode, data, new VKCallback<VKAccessToken>() {

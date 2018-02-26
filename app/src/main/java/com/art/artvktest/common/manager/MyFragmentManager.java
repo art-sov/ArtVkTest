@@ -41,7 +41,7 @@ public class MyFragmentManager {
         }
     }
 
-    //посколько не все фрагменты нужны в стеке, метод возвращает FragmentTransaction в
+    //поскольку не все фрагменты нужны в стеке, метод возвращает FragmentTransaction в
     //зависимости от параметра addToBackStag будет добавлять/не доюбавлять фрагмент в стек
     private FragmentTransaction createAddTransaction(BaseActivity activity,
                                                      BaseFragment fragment,

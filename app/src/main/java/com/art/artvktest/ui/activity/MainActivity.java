@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.art.artvktest.CurrentUser;
+import com.art.artvktest.MyApplication;
 import com.art.artvktest.R;
 import com.art.artvktest.consts.ApiConstants;
 import com.art.artvktest.mvp.presenter.MainPresenter;
@@ -25,6 +26,8 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        MyApplication.getsApplicationComponent().inject(this);
 
 //        String[] fingerprints = VKUtil.getCertificateFingerprint(this, this.getPackageName());
 //        Log.d("MainActivity", "Fingerprint: " + Arrays.toString(fingerprints));

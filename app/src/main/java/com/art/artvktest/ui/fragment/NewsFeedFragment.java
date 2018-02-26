@@ -21,6 +21,6 @@ public class NewsFeedFragment extends BaseFragment {
 
     @Override
     public int onCreateToolbarTitle() {
-        return R.string.string_name_news;
+        return R.string.screen_name_news;
     }
 }

@@ -47,7 +47,6 @@ public abstract class BaseActivity extends MvpAppCompatActivity{
         }
     }
 
-
     //методы добавления.удаления фрагментов
     //метод для установки корневого фрагмента
     public void setContent(BaseFragment fragment){

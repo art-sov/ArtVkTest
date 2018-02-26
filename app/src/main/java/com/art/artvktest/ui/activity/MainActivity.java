@@ -11,6 +11,7 @@ import com.art.artvktest.R;
 import com.art.artvktest.consts.ApiConstants;
 import com.art.artvktest.mvp.presenter.MainPresenter;
 import com.art.artvktest.mvp.view.MainView;
+import com.art.artvktest.ui.fragment.NewsFeedFragment;
 import com.vk.sdk.VKAccessToken;
 import com.vk.sdk.VKCallback;
 import com.vk.sdk.VKSdk;
@@ -56,10 +57,12 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     public void startSignIn() {
         VKSdk.login(this, ApiConstants.DEFAULT_LOGIN_SCOPE);
+
     }
 
     @Override
     public void signedId() {
         Toast.makeText(this, "Current user id: " + CurrentUser.getId(), Toast.LENGTH_LONG).show();
+        setContent(new NewsFeedFragment());
     }
 }

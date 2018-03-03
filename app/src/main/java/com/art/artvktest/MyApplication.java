@@ -30,6 +30,7 @@ public class MyApplication extends Application {
                 .applicationModule(new ApplicationModule(this))
                 .build();
     }
+
     //метод для получения компонента
     public static ApplicationComponent getsApplicationComponent(){
         return sApplicationComponent;

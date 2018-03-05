@@ -2,16 +2,14 @@ package com.art.artvktest.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.art.artvktest.CurrentUser;
 import com.art.artvktest.MyApplication;
 import com.art.artvktest.R;
 import com.art.artvktest.rest.api.WallApi;
-import com.art.artvktest.rest.model.response.BaseItemResponse;
-import com.art.artvktest.rest.model.response.Full;
+import com.art.artvktest.rest.model.request.WallGetRequestModel;
+import com.art.artvktest.rest.model.response.WallGetResponse;
 
 import javax.inject.Inject;
 
@@ -38,16 +36,20 @@ public class NewsFeedFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mWallApi.get("-23213239", CurrentUser.getAccessToken(), 1, "5.73")
-                .enqueue(new Callback<Full<BaseItemResponse>>() {
+        mWallApi.get(new WallGetRequestModel(-86529522).toMap())
+                .enqueue(new Callback<WallGetResponse>() {
+
                     @Override
-                    public void onResponse(Call<Full<BaseItemResponse>> call, Response<Full<BaseItemResponse>> response) {
-                        Log.i("response", "response: " + response.body().toString());
-                        Toast.makeText(getActivity(), "Count: " + response.body().response.getCount(), Toast.LENGTH_LONG).show();
+                    public void onResponse(Call<WallGetResponse> call, Response<WallGetResponse> response) {
+
+                        //Log.i("response", "response: " + response.body().toString());
+                        Toast.makeText(getActivity(), "Likes: " +
+                                response.body().response.getItems().get(0).getLikes().getCount(),
+                                Toast.LENGTH_LONG).show();
                     }
 
                     @Override
-                    public void onFailure(Call<Full<BaseItemResponse>> call, Throwable t) {
+                    public void onFailure(Call<WallGetResponse> call, Throwable t) {
                         t.printStackTrace();
                     }
                 });

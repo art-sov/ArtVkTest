@@ -1,6 +1,5 @@
 package com.art.artvktest.rest.model.response;
 
-
 import java.util.ArrayList;
 import java.util.List;
 

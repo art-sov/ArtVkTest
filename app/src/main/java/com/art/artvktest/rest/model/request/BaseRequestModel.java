@@ -10,7 +10,6 @@ import java.util.Map;
 
 public abstract class BaseRequestModel {
 
-
     //SerialisedName - чтобы ретрофит понимал названия полей
     @SerializedName(VKApiConst.VERSION)
     Double version = ApiConstants.DEFAULT_VERSION;

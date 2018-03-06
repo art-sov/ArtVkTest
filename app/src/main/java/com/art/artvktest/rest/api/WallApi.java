@@ -1,6 +1,6 @@
 package com.art.artvktest.rest.api;
 
-import com.art.artvktest.rest.model.response.WallGetResponse;
+import com.art.artvktest.rest.model.response.GetWallResponse;
 
 import java.util.Map;
 
@@ -16,5 +16,5 @@ import retrofit2.http.QueryMap;
 public interface WallApi {
 
     @GET(ApiMethods.WALL_GET)
-    Call<WallGetResponse> get(@QueryMap Map<String, String> map);
+    Call<GetWallResponse> get(@QueryMap Map<String, String> map);
 }

@@ -8,10 +8,6 @@ import com.art.artvktest.ui.fragment.BaseFragment;
 
 import java.util.Stack;
 
-/**
- * Created by Sovalov.AV on 14.02.2018.
- */
-
 public class MyFragmentManager {
 
     //в стеке всегда должен оставаться один фрагмент, константа для этого

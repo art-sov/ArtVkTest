@@ -10,6 +10,7 @@ import java.util.Map;
  * Created by admin on 05.03.2018.
  */
 
+//модель для конкретного запроса стены
 public class WallGetRequestModel extends BaseRequestModel{
 
     //переменные для запроса
@@ -20,7 +21,7 @@ public class WallGetRequestModel extends BaseRequestModel{
     int count = ApiConstants.DEFAULT_COUNT;
 
     @SerializedName(VKApiConst.OFFSET)
-    int offset;
+    int offset = 0;
 
     @SerializedName(VKApiConst.EXTENDED)
     int extended = 1;

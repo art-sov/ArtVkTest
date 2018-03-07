@@ -60,7 +60,6 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     public void startSignIn() {
         VKSdk.login(this, ApiConstants.DEFAULT_LOGIN_SCOPE);
-
     }
 
     @Override

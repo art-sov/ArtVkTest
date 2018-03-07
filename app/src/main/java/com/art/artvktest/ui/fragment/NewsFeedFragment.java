@@ -57,7 +57,7 @@ public class NewsFeedFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mWallApi.get(new WallGetRequestModel(-86529522).toMap())
+        mWallApi.get(new WallGetRequestModel(-23213239).toMap())
                 .enqueue(new Callback<GetWallResponse>() {
 
                     @Override

@@ -10,14 +10,14 @@ import com.vk.sdk.VKSdk;
 public class CurrentUser {
 
     public static String getAccessToken() {
-        if (VKAccessToken.currentToken() != null) {
+        if (VKAccessToken.currentToken() == null) {
             return null;
         }
         return VKAccessToken.currentToken().accessToken;
     }
 
     public static String getId() {
-        if (VKAccessToken.currentToken() == null) {
+        if (VKAccessToken.currentToken() != null) {
             return null;
         }
         return VKAccessToken.currentToken().userId;

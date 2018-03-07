@@ -1,6 +1,7 @@
 package com.art.artvktest.rest;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -16,8 +17,18 @@ public class RestClient {
     //инициализируем mRetrofit через конструктор с помощью билдера
 
     public RestClient() {
+
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        OkHttpClient okClient = new OkHttpClient.Builder()
+                .addInterceptor(loggingInterceptor)
+                .build();
+
         mRetrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(okClient)
                 .baseUrl(VK_BASE_URL)
                 .build();
     }

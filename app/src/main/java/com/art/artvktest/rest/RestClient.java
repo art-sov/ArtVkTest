@@ -1,5 +1,7 @@
 package com.art.artvktest.rest;
 
+import com.art.artvktest.BuildConfig;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -20,7 +22,8 @@ public class RestClient {
 
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
 
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        if (BuildConfig.DEBUG)
+            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient okClient = new OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)

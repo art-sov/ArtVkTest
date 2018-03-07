@@ -4,7 +4,7 @@ package com.art.artvktest.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Group {
+public class Group implements Owner {
 
     @SerializedName("id")
     @Expose
@@ -36,10 +36,6 @@ public class Group {
     @SerializedName("photo_200")
     @Expose
     private String photo200;
-
-    public Integer getId() {
-        return id;
-    }
 
     public void setId(Integer id) {
         this.id = id;
@@ -117,4 +113,18 @@ public class Group {
         this.photo200 = photo200;
     }
 
+    @Override
+    public String getFullName() {
+        return name;
+    }
+
+    @Override
+    public String getPhoto() {
+        return photo100;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
 }

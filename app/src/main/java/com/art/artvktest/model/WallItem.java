@@ -7,6 +7,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class WallItem {
 
+    public String senderName;
+    public String senderPhoto;
+
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -162,4 +165,30 @@ public class WallItem {
         this.views = views;
     }
 
+    public String getSenderName() {
+        return senderName;
+    }
+
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
+    }
+
+    public String getSenderPhoto() {
+        return senderPhoto;
+    }
+
+    public void setSenderPhoto(String senderPhoto) {
+        this.senderPhoto = senderPhoto;
+    }
+    //метод для проверки: содержит ли запись репост
+    public boolean haveSharedRepost() {
+        return copyHistory.size() > 0;
+    }
+    //метод для получения репоста
+    public  WallItem getSharedRepost(){
+        if (haveSharedRepost()) {
+            return copyHistory.get(0);
+        }
+        return null;
+    }
 }

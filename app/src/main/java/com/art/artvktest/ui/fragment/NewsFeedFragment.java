@@ -10,8 +10,11 @@ import android.widget.Toast;
 import com.art.artvktest.MyApplication;
 import com.art.artvktest.R;
 import com.art.artvktest.common.BaseAdapter;
+import com.art.artvktest.common.utils.VkListHelper;
 import com.art.artvktest.model.WallItem;
+import com.art.artvktest.model.view.BaseViewModel;
 import com.art.artvktest.model.view.NewsItemBodyViewModel;
+import com.art.artvktest.model.view.NewsItemHeaderViewModel;
 import com.art.artvktest.rest.api.WallApi;
 import com.art.artvktest.rest.model.request.WallGetRequestModel;
 import com.art.artvktest.rest.model.response.GetWallResponse;
@@ -57,17 +60,20 @@ public class NewsFeedFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        //-23213239
         mWallApi.get(new WallGetRequestModel(-23213239).toMap())
                 .enqueue(new Callback<GetWallResponse>() {
 
                     @Override
                     public void onResponse(Call<GetWallResponse> call, Response<GetWallResponse> response) {
+                        List<WallItem> wallItems = VkListHelper.getWallList(response.body().response);
+                        List<BaseViewModel> list = new ArrayList<>();
 
-                        //создаем список и в цикле добавляем в него ViewModel, используя для их наполнения ответ сервера
-                        List<NewsItemBodyViewModel> list = new ArrayList<>();
-                        for (WallItem item: response.body().response.getItems()) {
+                        for (WallItem item: wallItems) {
+                            list.add(new NewsItemHeaderViewModel(item));
                             list.add(new NewsItemBodyViewModel(item));
                         }
+
                         mAdapter.addItems(list);
 
                         //Log.i("response", "response: " + response.body().toString());

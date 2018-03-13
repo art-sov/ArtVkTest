@@ -1,14 +1,16 @@
 
 package com.art.artvktest.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class WallItem {
 
-    public String senderName;
-    public String senderPhoto;
+    private String attachmentsString;
+    private String senderName;
+    private String senderPhoto;
 
     @SerializedName("id")
     @Expose
@@ -34,9 +36,14 @@ public class WallItem {
     @SerializedName("can_pin")
     @Expose
     private Integer canPin;
-    @SerializedName("attachments")
+//    @SerializedName("attachments")
+//    @Expose
+//    private List<ApiAttachment> attachments = new ArrayList<>();
+
+    @SerializedName("copy_history")
     @Expose
-    private List<Attachment> attachments = null;
+    private List<WallItem> copyHistory = new ArrayList<>();
+
     @SerializedName("post_source")
     @Expose
     private PostSource postSource;
@@ -52,6 +59,14 @@ public class WallItem {
     @SerializedName("views")
     @Expose
     private Views views;
+
+    public String getAttachmentsString() {
+        return attachmentsString;
+    }
+
+    public void setAttachmentsString(String attachmentsString) {
+        this.attachmentsString = attachmentsString;
+    }
 
     public Integer getId() {
         return id;
@@ -117,13 +132,13 @@ public class WallItem {
         this.canPin = canPin;
     }
 
-    public List<Attachment> getAttachments() {
-        return attachments;
-    }
-
-    public void setAttachments(List<Attachment> attachments) {
-        this.attachments = attachments;
-    }
+//    public List<ApiAttachment> getAttachments() {
+//        return attachments;
+//    }
+//
+//    public void setAttachments(List<ApiAttachment> attachments) {
+//        this.attachments = attachments;
+//    }
 
     public PostSource getPostSource() {
         return postSource;
@@ -169,23 +184,25 @@ public class WallItem {
         return senderName;
     }
 
-    public void setSenderName(String senderName) {
-        this.senderName = senderName;
-    }
-
     public String getSenderPhoto() {
         return senderPhoto;
+    }
+
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
     }
 
     public void setSenderPhoto(String senderPhoto) {
         this.senderPhoto = senderPhoto;
     }
-    //метод для проверки: содержит ли запись репост
+
+    //метод для проверки, содержит ли shared репост
     public boolean haveSharedRepost() {
         return copyHistory.size() > 0;
     }
-    //метод для получения репоста
-    public  WallItem getSharedRepost(){
+
+   //метод для получения репоста
+    public WallItem getSharedRepost() {
         if (haveSharedRepost()) {
             return copyHistory.get(0);
         }

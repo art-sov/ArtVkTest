@@ -6,14 +6,12 @@ import com.art.artvktest.di.module.RestModule;
 import com.art.artvktest.ui.activity.BaseActivity;
 import com.art.artvktest.ui.activity.MainActivity;
 import com.art.artvktest.ui.fragment.NewsFeedFragment;
+import com.art.artvktest.ui.holder.NewsItemBodyHolder;
 
 import javax.inject.Singleton;
 
 import dagger.Component;
 
-/**
- * Created by admin on 26.02.2018.
- */
 @Singleton
 @Component(modules = {ApplicationModule.class, ManagerModule.class, RestModule.class})
 public interface ApplicationComponent {
@@ -24,5 +22,8 @@ public interface ApplicationComponent {
 
     //fragments
     void inject(NewsFeedFragment fragment);
+
+    //holders
+    void inject(NewsItemBodyHolder holder);
 
 }

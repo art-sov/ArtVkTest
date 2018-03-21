@@ -3,6 +3,8 @@ package com.art.artvktest.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.art.artvktest.model.attacment.ApiAttachment;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -36,9 +38,9 @@ public class WallItem {
     @SerializedName("can_pin")
     @Expose
     private Integer canPin;
-//    @SerializedName("attachments")
-//    @Expose
-//    private List<ApiAttachment> attachments = new ArrayList<>();
+    @SerializedName("attachments")
+    @Expose
+    private List<ApiAttachment> attachments = new ArrayList<>();
 
     @SerializedName("copy_history")
     @Expose
@@ -132,13 +134,13 @@ public class WallItem {
         this.canPin = canPin;
     }
 
-//    public List<ApiAttachment> getAttachments() {
-//        return attachments;
-//    }
-//
-//    public void setAttachments(List<ApiAttachment> attachments) {
-//        this.attachments = attachments;
-//    }
+    public List<ApiAttachment> getAttachments() {
+        return attachments;
+    }
+
+    public void setAttachments(List<ApiAttachment> attachments) {
+        this.attachments = attachments;
+    }
 
     public PostSource getPostSource() {
         return postSource;

@@ -14,6 +14,7 @@ import com.art.artvktest.common.utils.VkListHelper;
 import com.art.artvktest.model.WallItem;
 import com.art.artvktest.model.view.BaseViewModel;
 import com.art.artvktest.model.view.NewsItemBodyViewModel;
+import com.art.artvktest.model.view.NewsItemFooterViewModel;
 import com.art.artvktest.model.view.NewsItemHeaderViewModel;
 import com.art.artvktest.rest.api.WallApi;
 import com.art.artvktest.rest.model.request.WallGetRequestModel;
@@ -28,26 +29,19 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class NewsFeedFragment extends BaseFragment {
+public class NewsFeedFragment extends BaseFeedFragment {
 
     @Inject
     WallApi mWallApi;
 
-    RecyclerView mRecyclerView;
-    BaseAdapter mAdapter;
+
 
 
     public NewsFeedFragment() {
         // Required empty public constructor
     }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
-        setUpRecyclerView(view);
-        setUpAdapter(mRecyclerView);
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,6 +66,7 @@ public class NewsFeedFragment extends BaseFragment {
                         for (WallItem item: wallItems) {
                             list.add(new NewsItemHeaderViewModel(item));
                             list.add(new NewsItemBodyViewModel(item));
+                            list.add(new NewsItemFooterViewModel(item));
                         }
 
                         mAdapter.addItems(list);
@@ -90,22 +85,8 @@ public class NewsFeedFragment extends BaseFragment {
     }
 
     @Override
-    protected int getMainContentLayout() {
-        return R.layout.fragment_feed;
-    }
-
-    @Override
     public int onCreateToolbarTitle() {
         return R.string.screen_name_news;
     }
 
-    //методы для инициализации RecyclerView и адаптера
-    private void setUpRecyclerView(View rootView){
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.rv_list);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-    }
-    private void setUpAdapter (RecyclerView recyclerView) {
-        mAdapter = new BaseAdapter();
-        recyclerView.setAdapter(mAdapter);
-    }
 }

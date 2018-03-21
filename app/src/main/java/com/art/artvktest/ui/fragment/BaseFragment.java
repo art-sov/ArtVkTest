@@ -1,6 +1,5 @@
 package com.art.artvktest.ui.fragment;
 
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
@@ -12,9 +11,6 @@ import android.view.ViewGroup;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
 
-/**
- * Created by Sovalov.AV on 14.02.2018.
- */
 
 public abstract class BaseFragment extends MvpAppCompatFragment {
 
@@ -32,7 +28,7 @@ public abstract class BaseFragment extends MvpAppCompatFragment {
         return context.getString(onCreateToolbarTitle());
     }
 
-        //метод, которій запрашивает заголовок тулбара у дочерних элементов
+    //метод, который запрашивает заголовок тулбара у дочерних элементов
     @StringRes
     public abstract int onCreateToolbarTitle();
 }

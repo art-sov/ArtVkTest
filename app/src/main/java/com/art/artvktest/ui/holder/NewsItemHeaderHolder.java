@@ -48,7 +48,6 @@ public class NewsItemHeaderHolder extends BaseViewHolder<NewsItemHeaderViewModel
         }
     }
 
-
     //очищаем аватарки и текстовые поля
     @Override
     public void unbindViewHolder() {

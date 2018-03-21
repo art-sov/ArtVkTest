@@ -7,6 +7,7 @@ import com.art.artvktest.ui.activity.BaseActivity;
 import com.art.artvktest.ui.activity.MainActivity;
 import com.art.artvktest.ui.fragment.NewsFeedFragment;
 import com.art.artvktest.ui.holder.NewsItemBodyHolder;
+import com.art.artvktest.ui.holder.NewsItemFooterHolder;
 
 import javax.inject.Singleton;
 
@@ -25,5 +26,7 @@ public interface ApplicationComponent {
 
     //holders
     void inject(NewsItemBodyHolder holder);
+    void inject(NewsItemFooterHolder holder);
+
 
 }

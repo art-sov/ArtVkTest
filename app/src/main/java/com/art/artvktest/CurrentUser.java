@@ -18,9 +18,9 @@ public class CurrentUser {
 
     public static String getId() {
         if (VKAccessToken.currentToken() != null) {
-            return null;
+            return VKAccessToken.currentToken().userId;
         }
-        return VKAccessToken.currentToken().userId;
+        return null;
     }
 
     public static boolean isAuthorized() {
